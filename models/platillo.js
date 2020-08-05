@@ -30,7 +30,8 @@ const platilloSchema = new Schema({
     },
     blnStatus: {
         type: Boolean,
-        require: true
+        require: true,
+        default: true
     }
 });
 

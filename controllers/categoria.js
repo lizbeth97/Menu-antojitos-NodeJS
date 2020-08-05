@@ -10,11 +10,22 @@ categoriaController.getCategorias = async(req, res) => {
 
 categoriaController.agregarCategorias = async(req, res) => {
     const agrCategoria = await new categoriaModel(req.body);
-    await agrCategoria.save();
-    res.json({
-        message: 'Categoria registrada'
-    })
-};
+    await agrCategoria.save((err, categoria) => {
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'El nombre de la categoria ya existe'
+                }
+            });
+        }
+        res.status(200).json({
+            ok: true,
+            categoria: categoria
+        });
+    });
+}
+
 categoriaController.editCategoria = async(req, res) => {
     const agrCategoria = {
         strNombre: req.body.strNombre,
