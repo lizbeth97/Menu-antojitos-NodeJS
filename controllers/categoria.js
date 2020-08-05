@@ -29,7 +29,8 @@ categoriaController.agregarCategorias = async(req, res) => {
 categoriaController.editCategoria = async(req, res) => {
     const agrCategoria = {
         strNombre: req.body.strNombre,
-        strDescripcion: req.body.strDescripcion
+        strDescripcion: req.body.strDescripcion,
+        blnStatus: req.body.blnStatus
 
     };
     console.log(agrCategoria);
